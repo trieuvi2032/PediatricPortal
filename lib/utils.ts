@@ -2,9 +2,6 @@ import { type ClassValue, clsx } from "clsx";
 
 import { twMerge } from "tailwind-merge";
 import qs from "query-string";
-
-import { UrlQueryParams, RemoveUrlQueryParams } from "@/types";
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -66,37 +63,36 @@ export const formatPrice = (price: string) => {
   return formattedPrice;
 };
 
-export function formUrlQuery({ params, key, value }: UrlQueryParams) {
-  const currentUrl = qs.parse(params);
+// FORM URL QUERY
+export const formUrlQuery = ({
+  searchParams,
+  key,
+  value,
+}: FormUrlQueryParams) => {
+  const params = { ...qs.parse(searchParams.toString()), [key]: value };
 
-  currentUrl[key] = value;
+  return `${window.location.pathname}?${qs.stringify(params, {
+    skipNull: true,
+  })}`;
+};
 
-  return qs.stringifyUrl(
-    {
-      url: window.location.pathname,
-      query: currentUrl,
-    },
-    { skipNull: true }
-  );
-}
-
+// REMOVE KEY FROM QUERY
 export function removeKeysFromQuery({
-  params,
+  searchParams,
   keysToRemove,
 }: RemoveUrlQueryParams) {
-  const currentUrl = qs.parse(params);
+  const currentUrl = qs.parse(searchParams);
 
   keysToRemove.forEach((key) => {
     delete currentUrl[key];
   });
 
-  return qs.stringifyUrl(
-    {
-      url: window.location.pathname,
-      query: currentUrl,
-    },
-    { skipNull: true }
+  // Remove null or undefined values
+  Object.keys(currentUrl).forEach(
+    (key) => currentUrl[key] == null && delete currentUrl[key]
   );
+
+  return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
 }
 
 export const handleError = (error: unknown) => {

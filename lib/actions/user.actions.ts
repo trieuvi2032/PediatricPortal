@@ -1,6 +1,5 @@
 "use server";
 
-import { CreateUserParams, UpdateUserParams } from "@/types";
 import { revalidatePath } from "next/cache";
 import { handleError } from "../utils";
 import { connectToDatabase } from "../database/mongoose";

@@ -56,14 +56,9 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   // CREATE
-  enum UserRole {
-    Admin = "admin",
-    User = "user",
-    // Add more roles as needed
-  }
 
   if (eventType === "user.created") {
-    const { id, email_addresses, image_url, first_name, last_name, role_base } =
+    const { id, email_addresses, image_url, first_name, last_name } =
       evt.data as UserJSON;
 
     const user = {
@@ -72,7 +67,6 @@ export async function POST(req: Request) {
       firstName: (first_name || " ") as string,
       lastName: (last_name || " ") as string,
       photo: image_url,
-      role: role_base,
     };
 
     const newUser = await createUser(user);
@@ -91,14 +85,13 @@ export async function POST(req: Request) {
 
   // UPDATE
   if (eventType === "user.updated") {
-    const { id, image_url, first_name, last_name, role_base } = evt.data;
+    const { id, image_url, first_name, last_name } = evt.data;
 
     const user = {
       clerkId: id,
       firstName: (first_name || " ") as string,
       lastName: (last_name || " ") as string,
       photo: image_url,
-      role: role_base,
     };
 
     const updatedUser = await updateUser(id, user);
