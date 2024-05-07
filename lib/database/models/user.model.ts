@@ -6,7 +6,6 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   photo: { type: String, required: false }, // assuming photo is a URL, and it's optional
-  role: { type: String, required: true },
 });
 
 const User = models.User || model("User", UserSchema);
