@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import OpenForm from "./OpenForm";
 
 const NavBar = () => {
   return (
@@ -15,7 +16,7 @@ const NavBar = () => {
           DEVELOPMENTAL AND BEHAVIORAL PEDIATRICS
         </p>
       </Link>
-      <div className="flex items-center gap-16">
+      <div className="flex items-center gap-6 ">
         <div className="flex items-center gap-6">
           <Link
             href="https://www.seattlechildrens.org/"
@@ -44,7 +45,7 @@ const NavBar = () => {
             />
           </Link>
         </div>
-        <div className="flex items-center gap-3 mr-6">
+        <div className="flex items-center gap-3">
           <button>
             <Image src="/icons/font.svg" alt="Font" width={28} height={28} />
           </button>
@@ -59,20 +60,21 @@ const NavBar = () => {
               height={90}
             />
           </button>
+        </div>
 
-          <div className="flex items-left">
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-              <Button
-                className="bg-blue-2 text-blue-4 rounded-full hover:bg-blue-1 hover:text-white-1 font-bold"
-                style={{ fontFamily: "Courier Prime" }}
-              >
-                <Link href="/sign-in">Login</Link>
-              </Button>
-            </SignedOut>
-          </div>
+        <div className="flex items-left gap-3 mr-3">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+            <OpenForm />
+          </SignedIn>
+          <SignedOut>
+            <Button
+              className="bg-blue-2 text-blue-4 rounded-full hover:bg-blue-1 hover:text-white-1 font-bold"
+              style={{ fontFamily: "Courier Prime" }}
+            >
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
         </div>
       </div>
     </header>

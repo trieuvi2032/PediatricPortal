@@ -1,15 +1,3 @@
-// export {};
-// Create a type for the roles
-declare type Roles = "admin" | "moderator";
-
-declare global {
-  interface CustomJwtSessionClaims {
-    metadata: {
-      role?: Roles;
-    };
-  }
-}
-
 // ====== USER PARAMS
 declare type CreateUserParams = {
   clerkId: string;
@@ -23,6 +11,56 @@ declare type UpdateUserParams = {
   firstName: string;
   lastName: string;
   photo: string;
+};
+
+// ====== CATEGORY PARAMS
+declare type CreateCategoryParams = {
+  categoryName: string;
+};
+
+// ====== SUB-CATEGORY PARAMS
+declare type CreateSubCategoryParams = {
+  subCategoryName: string;
+  parentCategoryId: string; // The ID of the parent category
+};
+
+// ====== SUB-SUB-CATEGORY PARAMS
+declare type CreateSubSubCategoryParams = {
+  subSubCategoryName: string;
+  parentSubCategoryId: string; // The ID of the parent sub-category
+};
+
+// ====== RESOURCE PARAMS
+declare type CreateResourceParams = {
+  resource: {
+    title: string;
+    description: string;
+    yearCreated: number; // The year the resource was created
+    url: string;
+    doc: string;
+    subSubcategoryId: string;
+  };
+
+  path: string;
+};
+
+declare type UpdateResourceParams = {
+  resource: {
+    _id: string;
+    title: string;
+    description: string;
+    yearCreated?: number; // The year the resource was created
+    type: string;
+  };
+  path: {
+    categoryId: string; // The ID of the category the resource belongs to
+    subCategoryId: string; // The ID of the sub-category the resource belongs to
+    subSubCategoryId: string; // The ID of the sub-sub-category the resource belongs to
+  };
+};
+
+declare type DeleteResourceParams = {
+  resourceId: string;
 };
 
 // ====== URL QUERY PARAMS
