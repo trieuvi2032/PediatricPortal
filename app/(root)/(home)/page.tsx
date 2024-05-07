@@ -81,7 +81,7 @@ const Home = () => {
       </div>
 
       <p
-        className="flex justify-center p-3 font-extrabold text-gray-1 text-xl mt-6 tracking-widest"
+        className="flex justify-center p-3 font-extrabold text-grey-1 text-xl mt-6 tracking-widest"
         style={{ fontFamily: "Courier Prime" }}
       >
         WELCOME TO DEVELOPMENTAL AND BEHAVIORAL PEDIATRICS
@@ -100,7 +100,7 @@ const Home = () => {
         and parents seeking developmental and behavioral health resources.
       </p>
 
-      <Link href="/dr-zinner">
+      <Link href="/about-us">
         <div
           className="flex items-center justify-center w-1/2 mx-auto mt-5 text-blue-1 text-lg font-normal py-2 rounded-lg"
           style={{ fontFamily: "Courier Prime" }}

@@ -1,17 +1,20 @@
-import Header from "@/components/Header";
-import NavBar from "@/components/NavBar";
+"use client";
+import Header from "@/components/shared/Header";
+import NavBar from "@/components/shared/NavBar";
 import React, { ReactNode } from "react";
-import ContactFooter from "@/components/ContactFooter";
+import ContactFooter from "@/components/shared/ContactFooter";
 import ContactLink from "@/components/ui/ContactLink";
-import ContactCard from "@/components/ContactCard";
+import ContactCard from "@/components/shared/ContactCard";
+import { usePathname } from "next/navigation";
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
   return (
     <div>
       <Header />
       <NavBar />
       <div>{children}</div>
-      <ContactLink href="/contact" />
+
       <ContactCard />
       <ContactFooter />
     </div>

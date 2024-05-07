@@ -38,7 +38,7 @@ const AboutUs = () => {
           </Link>
           <div className="ml-10 mt-3">
             <p
-              className="text-2xl text-gray-1"
+              className="text-2xl text-grey-1"
               style={{ fontFamily: "Courier Prime" }}
             >
               Dr. Zinner pursues clinical and research interests with a strong

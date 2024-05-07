@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NavBar = () => {
   return (
@@ -57,24 +59,20 @@ const NavBar = () => {
               height={90}
             />
           </button>
-          {/* Login Button */}
-          <Link href="/log-in">
-            <button
-              className="bg-blue-2 text-white px-4 py-2 rounded text-blue-1 hover:bg-blue-1 hover:text-white-1"
-              style={{ fontFamily: "Courier Prime" }}
-            >
-              Login
-            </button>
-          </Link>
-          {/* Signup Button */}
-          <Link href="/sign-up">
-            <button
-              className="bg-blue-2 text-white px-4 py-2 rounded text-blue-1 hover:bg-blue-1 hover:text-white-1"
-              style={{ fontFamily: "Courier Prime" }}
-            >
-              Signup
-            </button>
-          </Link>
+
+          <div className="flex items-left">
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              <Button
+                className="bg-blue-2 text-blue-4 rounded-full hover:bg-blue-1 hover:text-white-1 font-bold"
+                style={{ fontFamily: "Courier Prime" }}
+              >
+                <Link href="/sign-in">Login</Link>
+              </Button>
+            </SignedOut>
+          </div>
         </div>
       </div>
     </header>

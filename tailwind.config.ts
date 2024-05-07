@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
+import { withUt } from "uploadthing/tw";
 
 const config = {
   darkMode: ["class"],
@@ -11,14 +13,12 @@ const config = {
   prefix: "",
   theme: {
     theme: {
-      fontFamily: {
-        sans: ["ui-sans-serif", "system-ui"],
-        serif: ["ui-serif", "Georgia"],
-        mono: ["ui-monospace", "SFMono-Regular"],
-        display: ["Oswald"],
-        body: ['"Open Sans"'],
-        prime1: ["Courier Prime", "monospace"],
-        prime2: ["Jersey 25", "sans-serif"],
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1400px",
+        },
       },
       fontWeight: {
         thin: "100",
@@ -41,6 +41,12 @@ const config = {
     extend: {
       textDecoration: ["responsive", "hover", "focus", "active", "group-hover"],
       colors: {
+        primary: {
+          500: "#624CF5",
+          50: " #F6F8FD",
+          DEFAULT: "#624CF5",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         "underline-color": "#ffffff",
         white: {
           1: "#FAFDFE",
@@ -56,8 +62,13 @@ const config = {
         orange: {
           1: "#E9804F",
         },
-        gray: {
+        grey: {
           1: "#00000087",
+
+          600: "#545454", // Subdued - color name in figma
+          500: "#757575",
+          400: "#AFAFAF", // Disabled - color name in figma
+          50: "#F6F6F6", // White Grey - color name in figma
         },
         overflow: {
           "wrap-break": "break-word",
@@ -67,10 +78,7 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -95,6 +103,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      backgroundImage: {
+        "dotted-pattern": "url('/images/dotted-pattern.png')",
       },
       borderRadius: {
         lg: "var(--radius)",

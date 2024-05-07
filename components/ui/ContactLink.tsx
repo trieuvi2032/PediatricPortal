@@ -4,12 +4,6 @@ import React from "react";
 const ContactLink = ({ href }: { href: string }) => {
   return (
     <div>
-      <h1
-        className="flex justify-center mx-auto mt-10 font-bold text-gray-1 tracking-widest"
-        style={{ fontFamily: "Courier Prime" }}
-      >
-        GET IN TOUCH
-      </h1>
       <Link
         href={href}
         className="flex items-center justify-center mx-auto mt-1 text-blue-3 text-2xl tracking-widest"
