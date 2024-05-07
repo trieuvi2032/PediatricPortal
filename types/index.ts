@@ -1,5 +1,3 @@
-export type UserRole = "admin" | "user";
-
 // ====== USER PARAMS
 export type CreateUserParams = {
   clerkId: string;
@@ -7,15 +5,14 @@ export type CreateUserParams = {
   lastName: string;
   email: string;
   photo: string;
-  role: UserRole;
+  role: string;
 };
 
 export type UpdateUserParams = {
   firstName: string;
   lastName: string;
-  email: string;
   photo: string;
-  role: UserRole;
+  role: string;
 };
 
 // ====== URL QUERY PARAMS
